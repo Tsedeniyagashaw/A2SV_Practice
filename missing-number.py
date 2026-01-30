@@ -1,9 +1,6 @@
-class Solution(object):
-    def missingNumber(self, nums):
-        
-        nums.sort()
-        n = len(nums)
-        for i in range(n+1):
-            if i not in nums:
-               return i
-        
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        my_set = set(nums)
+        for i in range(len(nums) + 1):
+            if i not in my_set:
+                return i
