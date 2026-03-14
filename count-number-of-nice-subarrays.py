@@ -9,7 +9,7 @@ class Solution:
         while r < n:
             if nums[r] % 2 != 0:
                 odd += 1
-                count += 0
+                count = 0
             while odd == k:
                      count += 1 
                      odd -= nums[l] % 2
