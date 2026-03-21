@@ -1,0 +1,20 @@
+class Solution:
+    def findDistictCount(self,nums,k):
+        left = 0
+        sub_arr = {}
+        count = 0
+        for right in range(len(nums)):
+            sub_arr[nums[right]] =  sub_arr.get(nums[right], 0) + 1
+            while len(sub_arr) > k:
+                sub_arr[nums[left]] = sub_arr.get(nums[left], 0) - 1
+                if sub_arr.get(nums[left]) == 0:
+                    sub_arr.pop(nums[left])
+                left += 1
+            count += right - left + 1 
+        return count      
+    def subarraysWithKDistinct(self, nums: List[int], k: int) -> int:
+        return  self.findDistictCount(nums,k) - self.findDistictCount(nums,k - 1)
+        
+        
+      
+
