@@ -1,0 +1,14 @@
+class Solution:
+    def minOperations(self, logs: List[str]) -> int:
+  
+        deep = 0
+        for l in logs:
+            if l == "../":
+                if deep != 0:
+                    deep -= 1
+            elif l == "./":
+                continue
+            else:
+                deep += 1
+        return deep
+        
