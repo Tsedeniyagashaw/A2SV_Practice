@@ -1,0 +1,26 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+         
+        if len(s) % 2 == 1:
+            return False
+
+        par_dict = {')':'(',']':'[','}':'{'}   
+        chars = []
+
+        for ch in s:
+            if ch == "(" or ch == "[" or ch == "{":
+                chars.append(ch)
+            else:
+                if not chars:
+                    return False
+                else:
+                    if par_dict[ch] != chars.pop():
+                        return False
+        if not chars:                
+            return True
+        else:
+            return False                         
+
+
+        
+        
