@@ -1,0 +1,18 @@
+class Solution:
+    def decodeString(self, s: str) -> str:
+        st = []
+        num = []
+        word = ""
+        for i in s:
+            if i == '[':
+                st.append((int(''.join(num)),word))
+                word = ""
+                num = []
+            elif i == ']':
+                k,prv = st.pop()
+                word = prv + word * k
+            elif ord(i) >= ord('a') and ord(i) <= ord('z'):
+                word += i
+            else:
+                num.append(i)
+        return word
