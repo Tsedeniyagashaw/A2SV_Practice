@@ -1,0 +1,25 @@
+class Solution:
+    def operation(self,x,y,op):
+            if op == '+': return x + y
+            if op == '-': return x - y
+            if op == '*': return x * y
+            return 0
+    def diffWaysToCompute(self, expression: str) -> List[int]:
+        res = []
+        if expression.isdigit():
+            return [int(expression)]
+
+        for i in range(len(expression)):
+            if not expression[i].isdigit():
+                left = self.diffWaysToCompute(expression[:i])
+                right = self.diffWaysToCompute(expression[i+1:])
+                for x in left:
+                    for y in right:
+                        value = self.operation(x,y,expression[i])
+                        res.append(value)
+        return res            
+
+
+        
+
+        
