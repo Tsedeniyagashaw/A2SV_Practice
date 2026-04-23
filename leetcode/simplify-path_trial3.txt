@@ -1,0 +1,24 @@
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        stack = []
+        i = 0
+
+        while i < len(path):
+            if path[i] == '/':
+                i += 1
+                continue
+            direc = ""
+            while i < len(path) and path[i] != '/':
+                direc  += path[i]
+                i += 1
+            if direc == ".":
+                continue
+            elif direc == "..":
+                if stack:
+                    stack.pop()
+            else:
+                stack.append(direc)
+        if not stack:
+            return "/"
+        else:                  
+          return "/" + "/".join(stack)                 
