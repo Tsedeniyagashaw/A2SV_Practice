@@ -1,0 +1,20 @@
+import bisect
+class Solution:
+    def findRightInterval(self, intervals: List[List[int]]) -> List[int]:
+        dic = {}
+
+        for i in range(len(intervals)):
+            dic[intervals[i][0]] = i
+
+        sorted_dic = sorted(dic.keys())    
+
+        res = []
+        for interval in intervals:
+            i = bisect.bisect_left(sorted_dic, interval[1]) 
+            if i == len(sorted_dic):
+                res.append(-1)
+            else:
+                res.append(dic[sorted_dic[i]])
+        return res                     
+
+        
