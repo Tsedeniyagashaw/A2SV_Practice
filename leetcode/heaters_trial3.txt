@@ -1,0 +1,24 @@
+class Solution:
+    def findRadius(self, houses: List[int], heaters: List[int]) -> int:
+        heaters.sort()
+        ans = 0
+        for i in range(len(houses)):
+            l = 0
+            r = len(heaters) - 1
+            curr_radius = float('inf')
+            
+            while l <= r:
+                mid = (l + r) // 2
+                if houses[i] == heaters[mid]:
+                    curr_radius = 0
+                    break
+                else:
+                    dce = abs(houses[i] - heaters[mid])
+                    curr_radius = min(dce, curr_radius)
+                    if houses[i] > heaters[mid]:
+                        l = mid + 1
+                    elif houses[i] < heaters[mid]:
+                        r = mid - 1  
+            ans = max(ans, curr_radius)
+        return ans                  
+        
