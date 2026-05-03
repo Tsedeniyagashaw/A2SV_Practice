@@ -1,0 +1,22 @@
+class MyCalendar:
+
+    def __init__(self):
+        self.bookings = []
+        
+
+    def book(self, startTime: int, endTime: int) -> bool:
+        a =[startTime, endTime]
+        for b in self.bookings:
+            a1,a2 = a
+            b1,b2= b
+            if max(a1,b1) < min(a2,b2):
+                return False
+        self.bookings.append(a)
+        return True        
+
+        
+
+
+# Your MyCalendar object will be instantiated and called as such:
+# obj = MyCalendar()
+# param_1 = obj.book(startTime,endTime)
